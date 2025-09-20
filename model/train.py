@@ -260,10 +260,11 @@ def train(opt):
                 
               
         # save model per 1e+5 iter.
-        if (iteration + 1) % 1e+5 == 0:
+        iters_per_epoch = 1441  # aus deinem Datenset
+        save_every = 10 * iters_per_epoch  # alle 10 Epochen speichern
+        if (iteration + 1) % save_every == 0:
             torch.save(
                 model.state_dict(), f'./saved_models/{opt.exp_name}/iter_{iteration+1}.pth')
-
         if (iteration + 1) == opt.num_iter:
             print('end the training')
             sys.exit()
