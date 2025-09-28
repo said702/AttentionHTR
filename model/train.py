@@ -255,7 +255,8 @@ def train(opt):
                     print("Early stopping")
                     early_stopping.log("Early stopping", valid_log_fname)
                     sys.exit()
-                
+
+                torch.save( model.state_dict(),f'./saved_models/{opt.exp_name}/epoch_{epoch+1}.pth') 
                 epoch += 1
                 
               
